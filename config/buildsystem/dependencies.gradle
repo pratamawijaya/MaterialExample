@@ -1,0 +1,17 @@
+allprojects {
+  repositories {
+    jcenter()
+  }
+}
+
+ext {
+
+  //Libraries
+  supportVersion = "24.2.0"
+  butterKnifeVersion = "8.4.0"
+
+  presentationDependencies = [supportCompat      : "com.android.support:appcompat-v7:${supportVersion}",
+                              supportDesign      : "com.android.support:design:${supportVersion}",
+                              butterknife        : "com.jakewharton:butterknife:${butterKnifeVersion}",
+                              butterknifeCompiler: "com.jakewharton:butterknife-compiler:${butterKnifeVersion}",]
+}

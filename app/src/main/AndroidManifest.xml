@@ -8,7 +8,7 @@
       android:label="@string/app_name"
       android:supportsRtl="true"
       android:theme="@style/Theme.MaterialApps">
-    <activity android:name=".presententation.ui.home.MainActivity">
+    <activity android:name=".presententation.ui.home.MainViewActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
