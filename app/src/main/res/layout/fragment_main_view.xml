@@ -1,15 +1,27 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.pratamawijaya.androidmaterial.presententation.ui.home.MainViewFragment"
+    tools:context=".pesentation.ui.home.HomeViewFragment"
     >
 
-  <!-- TODO: Update blank fragment layout -->
-  <TextView
+  <android.support.v4.widget.SwipeRefreshLayout
+      android:id="@+id/content_view"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:text="Main View Fragment"
+      >
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+  </android.support.v4.widget.SwipeRefreshLayout>
+
+  <ProgressBar
+      android:id="@+id/loading_view"
+      android:layout_width="70dp"
+      android:layout_height="70dp"
+      android:layout_centerInParent="true"
       />
 
-</FrameLayout>
+</RelativeLayout>

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".presententation.ui.home.MainViewActivity"
+    tools:context=".pesentation.ui.home.HomeViewActivity"
     >
 
   <!-- appbar and content-->

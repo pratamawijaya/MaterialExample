@@ -1,4 +1,4 @@
-package com.pratamawijaya.androidmaterial.presententation.ui.home;
+package com.pratamawijaya.androidmaterial.pesentation.ui.home;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,9 +9,9 @@ import android.view.MenuItem;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.pratamawijaya.androidmaterial.R;
-import com.pratamawijaya.androidmaterial.presententation.ui.BaseToolbarActivity;
+import com.pratamawijaya.androidmaterial.pesentation.ui.BaseToolbarActivity;
 
-public class MainViewActivity extends BaseToolbarActivity
+public class HomeViewActivity extends BaseToolbarActivity
     implements NavigationView.OnNavigationItemSelectedListener {
 
   @BindView(R.id.drawer_layout) DrawerLayout drawerLayout;

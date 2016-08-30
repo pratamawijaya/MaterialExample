@@ -1,8 +1,8 @@
-package com.pratamawijaya.androidmaterial.presententation.ui.home;
+package com.pratamawijaya.androidmaterial.pesentation.ui.home;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import com.pratamawijaya.androidmaterial.presententation.ui.utils.FragmentOrganizer;
+import com.pratamawijaya.androidmaterial.pesentation.ui.utils.FragmentOrganizer;
 
 /**
  * Created by pratama on 8/30/16.
@@ -13,12 +13,12 @@ public class HomeFragmentOrganizer extends FragmentOrganizer {
   }
 
   @Override protected Fragment getInitialFragment() {
-    return MainViewFragment.newInstance();
+    return HomeViewFragment.newInstance();
   }
 
   @Override public boolean handleBackNavigation() {
     Fragment fragment = getOpenFragment();
-    if (fragment instanceof MainViewFragment) {
+    if (fragment instanceof HomeViewFragment) {
       return false;
     } else {
       fragmentManager.popBackStack();
