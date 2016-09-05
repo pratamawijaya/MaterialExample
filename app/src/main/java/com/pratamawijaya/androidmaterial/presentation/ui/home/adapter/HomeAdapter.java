@@ -1,4 +1,4 @@
-package com.pratamawijaya.androidmaterial.pesentation.ui.home.adapter;
+package com.pratamawijaya.androidmaterial.presentation.ui.home.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

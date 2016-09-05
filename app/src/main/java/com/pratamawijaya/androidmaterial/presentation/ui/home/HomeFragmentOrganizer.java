@@ -1,8 +1,8 @@
-package com.pratamawijaya.androidmaterial.pesentation.ui.home;
+package com.pratamawijaya.androidmaterial.presentation.ui.home;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import com.pratamawijaya.androidmaterial.pesentation.ui.utils.FragmentOrganizer;
+import com.pratamawijaya.androidmaterial.presentation.ui.utils.FragmentOrganizer;
 
 /**
  * Created by pratama on 8/30/16.

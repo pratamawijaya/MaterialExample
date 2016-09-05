@@ -1,4 +1,4 @@
-package com.pratamawijaya.androidmaterial.pesentation.ui.home.view;
+package com.pratamawijaya.androidmaterial.presentation.ui.home.view;
 
 /**
  * Created by pratama on 8/30/16.
@@ -8,6 +8,8 @@ public class HomeContract {
     void showLoading();
 
     void hideLoading();
+
+    void showError();
   }
 
   public interface Presenter {

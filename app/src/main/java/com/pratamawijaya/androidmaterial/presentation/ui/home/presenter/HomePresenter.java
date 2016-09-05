@@ -1,7 +1,7 @@
-package com.pratamawijaya.androidmaterial.pesentation.ui.home.presenter;
+package com.pratamawijaya.androidmaterial.presentation.ui.home.presenter;
 
 import com.pratamawijaya.androidmaterial.data.repository.SpeciesDataRespository;
-import com.pratamawijaya.androidmaterial.pesentation.ui.home.view.HomeContract;
+import com.pratamawijaya.androidmaterial.presentation.ui.home.view.HomeContract;
 
 /**
  * Created by pratama on 8/30/16.

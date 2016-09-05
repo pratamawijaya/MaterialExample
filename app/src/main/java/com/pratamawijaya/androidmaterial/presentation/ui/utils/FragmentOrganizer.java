@@ -1,4 +1,4 @@
-package com.pratamawijaya.androidmaterial.pesentation.ui.utils;
+package com.pratamawijaya.androidmaterial.presentation.ui.utils;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

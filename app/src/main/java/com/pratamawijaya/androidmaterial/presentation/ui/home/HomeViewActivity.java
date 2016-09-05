@@ -1,4 +1,4 @@
-package com.pratamawijaya.androidmaterial.pesentation.ui.home;
+package com.pratamawijaya.androidmaterial.presentation.ui.home;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -6,10 +6,15 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.pratamawijaya.androidmaterial.R;
-import com.pratamawijaya.androidmaterial.pesentation.ui.BaseToolbarActivity;
+import com.pratamawijaya.androidmaterial.presentation.ui.BaseToolbarActivity;
+import com.pratamawijaya.androidmaterial.presentation.ui.account.AccountFragment;
+import com.pratamawijaya.androidmaterial.presentation.ui.category.CategoryViewFragment;
+import com.pratamawijaya.androidmaterial.presentation.ui.home.settings.SettingsViewFragment;
 
 public class HomeViewActivity extends BaseToolbarActivity
     implements NavigationView.OnNavigationItemSelectedListener {
@@ -48,6 +53,12 @@ public class HomeViewActivity extends BaseToolbarActivity
 
   private void setupNavigationView() {
     if (navigationView != null) {
+      View headerView = navigationView.inflateHeaderView(R.layout.layout_header_navigationview);
+
+      TextView txtUser = (TextView) headerView.findViewById(R.id.txt_username);
+
+      txtUser.setText("Pratama Nur Wijaya");
+
       navigationView.setNavigationItemSelectedListener(this);
     }
   }
@@ -62,6 +73,21 @@ public class HomeViewActivity extends BaseToolbarActivity
   }
 
   @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-    return false;
+    switch (item.getItemId()) {
+      case R.id.menu_home:
+        fragmentOrganizer.openFragment(HomeViewFragment.newInstance());
+        break;
+      case R.id.menu_categories:
+        fragmentOrganizer.openFragment(CategoryViewFragment.newInstance());
+        break;
+      case R.id.menu_account:
+        fragmentOrganizer.openFragment(AccountFragment.newInstance());
+        break;
+      case R.id.menu_setting:
+        fragmentOrganizer.openFragment(SettingsViewFragment.newInstance());
+        break;
+    }
+    drawerLayout.closeDrawer(GravityCompat.START);
+    return true;
   }
 }

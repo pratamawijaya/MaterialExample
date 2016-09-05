@@ -1,4 +1,4 @@
-package com.pratamawijaya.androidmaterial.pesentation.ui.home;
+package com.pratamawijaya.androidmaterial.presentation.ui.home;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,10 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.pratamawijaya.androidmaterial.R;
-import com.pratamawijaya.androidmaterial.pesentation.ui.home.view.HomeContract;
+import com.pratamawijaya.androidmaterial.presentation.ui.home.view.HomeContract;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +24,7 @@ public class HomeViewFragment extends Fragment implements HomeContract.View {
   @BindView(R.id.content_view) SwipeRefreshLayout contentView;
   @BindView(R.id.recycler_view) RecyclerView recyclerView;
   @BindView(R.id.loading_view) ProgressBar loadingView;
+  @BindView(R.id.error_view) TextView errorView;
 
   public HomeViewFragment() {
     // Required empty public constructor
@@ -40,6 +42,9 @@ public class HomeViewFragment extends Fragment implements HomeContract.View {
     ButterKnife.bind(this, view);
 
     setupRecyclerView();
+
+    // TODO: 9/5/16 load some data
+    showError();
   }
 
   private void setupRecyclerView() {
@@ -60,5 +65,10 @@ public class HomeViewFragment extends Fragment implements HomeContract.View {
   @Override public void hideLoading() {
     loadingView.setVisibility(View.GONE);
     contentView.setVisibility(View.VISIBLE);
+  }
+
+  @Override public void showError() {
+    contentView.setVisibility(View.GONE);
+    errorView.setVisibility(View.VISIBLE);
   }
 }

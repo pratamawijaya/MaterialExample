@@ -6,6 +6,12 @@
       android:checkableBehavior="single">
 
     <item
+        android:id="@+id/menu_home"
+        android:icon="@drawable/ic_home_black_18dp"
+        android:title="Home"
+        />
+
+    <item
         android:id="@+id/menu_categories"
         android:icon="@drawable/ic_extension_black_18dp"
         android:title="Categories"></item>

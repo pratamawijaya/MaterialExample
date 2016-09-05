@@ -31,4 +31,5 @@ dependencies {
 
   compile presentationDependencies.butterknife
   apt presentationDependencies.butterknifeCompiler
+  compile 'com.android.support:support-v4:24.2.0'
 }
