@@ -14,7 +14,7 @@ import com.pratamawijaya.androidmaterial.R;
 import com.pratamawijaya.androidmaterial.presentation.ui.BaseToolbarActivity;
 import com.pratamawijaya.androidmaterial.presentation.ui.account.AccountFragment;
 import com.pratamawijaya.androidmaterial.presentation.ui.category.CategoryViewFragment;
-import com.pratamawijaya.androidmaterial.presentation.ui.home.settings.SettingsViewFragment;
+import com.pratamawijaya.androidmaterial.presentation.ui.settings.SettingsViewFragment;
 
 public class HomeViewActivity extends BaseToolbarActivity
     implements NavigationView.OnNavigationItemSelectedListener {
