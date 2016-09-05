@@ -33,6 +33,8 @@ public class HomeViewActivity extends BaseToolbarActivity
     // TODO: 8/30/16 setup header navigation view
     setupNavigationView();
     setupFragmentOrganizer();
+
+    navigationView.getMenu().getItem(0).setChecked(true);
   }
 
   private void setupActionBar() {
@@ -75,6 +77,7 @@ public class HomeViewActivity extends BaseToolbarActivity
   @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
     switch (item.getItemId()) {
       case R.id.menu_home:
+        navigationView.getMenu().getItem(0).setChecked(true);
         fragmentOrganizer.openFragment(HomeViewFragment.newInstance());
         break;
       case R.id.menu_categories:
