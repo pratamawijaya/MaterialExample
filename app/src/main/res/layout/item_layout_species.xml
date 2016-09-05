@@ -19,7 +19,9 @@
       android:id="@+id/txt_name"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:ellipsize="end"
       android:fontFamily="sans-serif-medium"
+      android:lines="2"
       tools:text="Nama"
       />
 

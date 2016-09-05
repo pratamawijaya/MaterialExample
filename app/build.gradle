@@ -3,9 +3,11 @@ apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'com.getkeepsafe.dexcount'
 
 android {
+  signingConfigs {
+    config {}
+  }
   compileSdkVersion 24
   buildToolsVersion "24.0.2"
-
   defaultConfig {
     applicationId "com.pratamawijaya.androidmaterial"
     minSdkVersion 15
@@ -19,15 +21,27 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
   }
+  productFlavors {
+    premium {
+      applicationId "com.pratamawijaya.androidmaterial.premium"
+      versionCode 1
+      versionName "1.0-premium"
+    }
+    free {
+      applicationId "com.pratamawijaya.androidmaterial.free"
+      versionCode 1
+      versionName "1.0-free"
+    }
+  }
 }
 
 dependencies {
   compile fileTree(include: ['*.jar'], dir: 'libs')
   testCompile 'junit:junit:4.12'
-  compile presentationDependencies.supportCompat
+  compile presentationDependencies.supportAppCompat
   compile presentationDependencies.supportDesign
+  compile presentationDependencies.support
   compile presentationDependencies.butterknife
   apt presentationDependencies.butterknifeCompiler
-  compile 'com.android.support:support-v4:24.2.0'
   compile 'com.squareup.picasso:picasso:2.5.2'
 }

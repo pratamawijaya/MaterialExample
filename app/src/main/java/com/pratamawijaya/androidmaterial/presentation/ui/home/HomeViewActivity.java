@@ -41,6 +41,7 @@ public class HomeViewActivity extends BaseToolbarActivity
     getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
   }
 
+
   @Override public boolean onOptionsItemSelected(MenuItem item) {
     int id = item.getItemId();
 
@@ -59,7 +60,7 @@ public class HomeViewActivity extends BaseToolbarActivity
 
       TextView txtUser = (TextView) headerView.findViewById(R.id.txt_username);
 
-      txtUser.setText("Pratama Nur Wijaya");
+      txtUser.setText("Pratama Nur Wijaya oaeieaoi aoei aeoi oaedaoedaeaoeiaeoi");
 
       navigationView.setNavigationItemSelectedListener(this);
     }
@@ -78,7 +79,7 @@ public class HomeViewActivity extends BaseToolbarActivity
     switch (item.getItemId()) {
       case R.id.menu_home:
         navigationView.getMenu().getItem(0).setChecked(true);
-        fragmentOrganizer.openFragment(HomeViewFragment.newInstance());
+        fragmentOrganizer.openFragment(HomeViewFragment.newInstance(""));
         break;
       case R.id.menu_categories:
         fragmentOrganizer.openFragment(CategoryViewFragment.newInstance());

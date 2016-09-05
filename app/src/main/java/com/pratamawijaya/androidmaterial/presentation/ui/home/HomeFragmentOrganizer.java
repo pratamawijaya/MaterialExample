@@ -13,7 +13,7 @@ public class HomeFragmentOrganizer extends FragmentOrganizer {
   }
 
   @Override protected Fragment getInitialFragment() {
-    return HomeViewFragment.newInstance();
+    return HomeViewFragment.newInstance("");
   }
 
   @Override public boolean handleBackNavigation() {

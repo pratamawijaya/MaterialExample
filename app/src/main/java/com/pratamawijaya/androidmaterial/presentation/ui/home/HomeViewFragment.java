@@ -7,6 +7,8 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
@@ -25,7 +27,8 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeViewFragment extends Fragment implements HomeContract.View {
+public class HomeViewFragment extends Fragment
+    implements HomeContract.View, SwipeRefreshLayout.OnRefreshListener {
 
   @BindView(R.id.content_view) SwipeRefreshLayout contentView;
   @BindView(R.id.recycler_view) RecyclerView recyclerView;
@@ -40,8 +43,9 @@ public class HomeViewFragment extends Fragment implements HomeContract.View {
     // Required empty public constructor
   }
 
-  public static HomeViewFragment newInstance() {
+  public static HomeViewFragment newInstance(String data) {
     Bundle args = new Bundle();
+    args.putString("data", data);
     HomeViewFragment fragment = new HomeViewFragment();
     fragment.setArguments(args);
     return fragment;
@@ -50,6 +54,13 @@ public class HomeViewFragment extends Fragment implements HomeContract.View {
   @Override public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     presenter = new HomePresenter(new SpeciesDataRespository(), this);
+    setHasOptionsMenu(true);
+    String text = getArguments().getString("data");
+  }
+
+  @Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    super.onCreateOptionsMenu(menu, inflater);
+    inflater.inflate(R.menu.menu_option, menu);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -64,6 +75,7 @@ public class HomeViewFragment extends Fragment implements HomeContract.View {
     species = new ArrayList<>();
     adapter = new HomeAdapter(getActivity(), species);
     recyclerView.setAdapter(adapter);
+    contentView.setOnRefreshListener(this);
   }
 
   @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -90,5 +102,9 @@ public class HomeViewFragment extends Fragment implements HomeContract.View {
   @Override public void setSpecies(List<Species> species) {
     this.species.addAll(species);
     adapter.notifyDataSetChanged();
+  }
+
+  @Override public void onRefresh() {
+
   }
 }
