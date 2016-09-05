@@ -11,6 +11,6 @@ public class HomeContract {
   }
 
   public interface Presenter {
-
+    void getListSpecies();
   }
 }
