@@ -7,11 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.pratamawijaya.androidmaterial.R;
 
-public class AccountFragment extends Fragment {
+public class AccountViewFragment extends Fragment {
 
-  public static AccountFragment newInstance() {
+  public static AccountViewFragment newInstance() {
     Bundle args = new Bundle();
-    AccountFragment fragment = new AccountFragment();
+    AccountViewFragment fragment = new AccountViewFragment();
     fragment.setArguments(args);
     return fragment;
   }

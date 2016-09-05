@@ -8,14 +8,17 @@ import com.pratamawijaya.androidmaterial.presentation.ui.home.view.HomeContract;
  */
 public class HomePresenter implements HomeContract.Presenter {
 
-    private SpeciesDataRespository speciesDataRespository;
+  private SpeciesDataRespository speciesDataRespository;
+  private HomeContract.View view;
 
-    public HomePresenter(SpeciesDataRespository speciesDataRespository) {
-        this.speciesDataRespository = speciesDataRespository;
-    }
+  public HomePresenter(SpeciesDataRespository speciesDataRespository, HomeContract.View view) {
+    this.speciesDataRespository = speciesDataRespository;
+    this.view = view;
+  }
 
-    @Override
-    public void getListSpecies() {
-
-    }
+  @Override public void getListSpecies() {
+    view.showLoading();
+    view.setSpecies(speciesDataRespository.speciesList());
+    view.hideLoading();
+  }
 }

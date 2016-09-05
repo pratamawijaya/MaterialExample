@@ -14,7 +14,13 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.pratamawijaya.androidmaterial.R;
+import com.pratamawijaya.androidmaterial.data.repository.SpeciesDataRespository;
+import com.pratamawijaya.androidmaterial.domain.model.Species;
+import com.pratamawijaya.androidmaterial.presentation.ui.home.adapter.HomeAdapter;
+import com.pratamawijaya.androidmaterial.presentation.ui.home.presenter.HomePresenter;
 import com.pratamawijaya.androidmaterial.presentation.ui.home.view.HomeContract;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +31,10 @@ public class HomeViewFragment extends Fragment implements HomeContract.View {
   @BindView(R.id.recycler_view) RecyclerView recyclerView;
   @BindView(R.id.loading_view) ProgressBar loadingView;
   @BindView(R.id.error_view) TextView errorView;
+
+  private HomePresenter presenter;
+  private HomeAdapter adapter;
+  private List<Species> species;
 
   public HomeViewFragment() {
     // Required empty public constructor
@@ -37,18 +47,23 @@ public class HomeViewFragment extends Fragment implements HomeContract.View {
     return fragment;
   }
 
+  @Override public void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    presenter = new HomePresenter(new SpeciesDataRespository(), this);
+  }
+
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     ButterKnife.bind(this, view);
-
     setupRecyclerView();
-
-    // TODO: 9/5/16 load some data
-    showError();
+    presenter.getListSpecies();
   }
 
   private void setupRecyclerView() {
     recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+    species = new ArrayList<>();
+    adapter = new HomeAdapter(getActivity(), species);
+    recyclerView.setAdapter(adapter);
   }
 
   @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -70,5 +85,10 @@ public class HomeViewFragment extends Fragment implements HomeContract.View {
   @Override public void showError() {
     contentView.setVisibility(View.GONE);
     errorView.setVisibility(View.VISIBLE);
+  }
+
+  @Override public void setSpecies(List<Species> species) {
+    this.species.addAll(species);
+    adapter.notifyDataSetChanged();
   }
 }

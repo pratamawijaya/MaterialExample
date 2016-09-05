@@ -12,7 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.pratamawijaya.androidmaterial.R;
 import com.pratamawijaya.androidmaterial.presentation.ui.BaseToolbarActivity;
-import com.pratamawijaya.androidmaterial.presentation.ui.account.AccountFragment;
+import com.pratamawijaya.androidmaterial.presentation.ui.account.AccountViewFragment;
 import com.pratamawijaya.androidmaterial.presentation.ui.category.CategoryViewFragment;
 import com.pratamawijaya.androidmaterial.presentation.ui.settings.SettingsViewFragment;
 
@@ -30,7 +30,6 @@ public class HomeViewActivity extends BaseToolbarActivity
     ButterKnife.bind(this);
 
     setupActionBar();
-    // TODO: 8/30/16 setup header navigation view
     setupNavigationView();
     setupFragmentOrganizer();
 
@@ -55,6 +54,7 @@ public class HomeViewActivity extends BaseToolbarActivity
 
   private void setupNavigationView() {
     if (navigationView != null) {
+      // inflating headerview
       View headerView = navigationView.inflateHeaderView(R.layout.layout_header_navigationview);
 
       TextView txtUser = (TextView) headerView.findViewById(R.id.txt_username);
@@ -84,7 +84,7 @@ public class HomeViewActivity extends BaseToolbarActivity
         fragmentOrganizer.openFragment(CategoryViewFragment.newInstance());
         break;
       case R.id.menu_account:
-        fragmentOrganizer.openFragment(AccountFragment.newInstance());
+        fragmentOrganizer.openFragment(AccountViewFragment.newInstance());
         break;
       case R.id.menu_setting:
         fragmentOrganizer.openFragment(SettingsViewFragment.newInstance());
