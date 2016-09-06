@@ -41,7 +41,6 @@ public class HomeViewActivity extends BaseToolbarActivity
     getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
   }
 
-
   @Override public boolean onOptionsItemSelected(MenuItem item) {
     int id = item.getItemId();
 
@@ -53,6 +52,9 @@ public class HomeViewActivity extends BaseToolbarActivity
     return true;
   }
 
+  /**
+   * handle navigationview, setup header
+   */
   private void setupNavigationView() {
     if (navigationView != null) {
       // inflating headerview
@@ -60,7 +62,7 @@ public class HomeViewActivity extends BaseToolbarActivity
 
       TextView txtUser = (TextView) headerView.findViewById(R.id.txt_username);
 
-      txtUser.setText("Pratama Nur Wijaya oaeieaoi aoei aeoi oaedaoedaeaoeiaeoi");
+      txtUser.setText("Pratama Nur Wijaya");
 
       navigationView.setNavigationItemSelectedListener(this);
     }

@@ -17,7 +17,11 @@ public class SpeciesDataRespository implements SpeciesRepository {
   @Override public List<Species> speciesList() {
     List<Species> data = new ArrayList<>();
     for (int i = 0; i < 50; i++) {
-      data.add(new Species(i, "Hewan ooeiaoei aoeitaoheitaoei aoehiaeohitahoeitha oeithaeotnihnatoehintaoehitaheoitn" + i, "http://lorempixel.com/200/200/animals/"));
+      if (i % 2 == 0) {
+        data.add(new Species(i, "Hewan " + i, "http://lorempixel.com/200/200/animals/"));
+      } else {
+        data.add(new Species(i, "Hewan " + i, "http://lorempixel.com/300/300/animals/"));
+      }
     }
     return data;
   }

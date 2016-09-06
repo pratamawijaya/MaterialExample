@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,9 +23,16 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeHolder> {
   private Context context;
   private List<Species> species;
 
-  public HomeAdapter(Context context, List<Species> species) {
+  public interface HomeAdapterListener {
+    void onItemClick(Species species);
+  }
+
+  public HomeAdapterListener listener;
+
+  public HomeAdapter(Context context, List<Species> species, HomeAdapterListener listener) {
     this.context = context;
     this.species = species;
+    this.listener = listener;
   }
 
   @Override public HomeHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -46,15 +54,21 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeHolder> {
 
     @BindView(R.id.txt_name) TextView name;
     @BindView(R.id.img_thumbnail) ImageView imageViewThumb;
+    @BindView(R.id.container) LinearLayout container;
 
     public HomeHolder(View itemView) {
       super(itemView);
       ButterKnife.bind(this, itemView);
     }
 
-    public void bindItem(Species species) {
+    public void bindItem(final Species species) {
       name.setText(species.name);
       Picasso.with(context).load(species.img).into(imageViewThumb);
+      container.setOnClickListener(new View.OnClickListener() {
+        @Override public void onClick(View v) {
+          listener.onItemClick(species);
+        }
+      });
     }
   }
 }

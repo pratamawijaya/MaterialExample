@@ -10,7 +10,7 @@ import com.squareup.picasso.Picasso;
 public class BaseApplication extends Application {
   @Override public void onCreate() {
     super.onCreate();
-    if (BuildConfig.DEBUG){
+    if (BuildConfig.DEBUG) {
       Picasso.with(this).setLoggingEnabled(true);
     }
   }

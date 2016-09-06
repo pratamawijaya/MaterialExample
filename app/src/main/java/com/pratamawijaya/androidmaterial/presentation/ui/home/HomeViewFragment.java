@@ -9,10 +9,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.pratamawijaya.androidmaterial.R;
@@ -28,7 +30,8 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class HomeViewFragment extends Fragment
-    implements HomeContract.View, SwipeRefreshLayout.OnRefreshListener {
+    implements HomeContract.View, SwipeRefreshLayout.OnRefreshListener,
+    HomeAdapter.HomeAdapterListener {
 
   @BindView(R.id.content_view) SwipeRefreshLayout contentView;
   @BindView(R.id.recycler_view) RecyclerView recyclerView;
@@ -63,6 +66,13 @@ public class HomeViewFragment extends Fragment
     inflater.inflate(R.menu.menu_option, menu);
   }
 
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
+    if (item.getItemId() == R.id.action_about) {
+      Toast.makeText(getContext(), "about", Toast.LENGTH_SHORT).show();
+    }
+    return true;
+  }
+
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     ButterKnife.bind(this, view);
@@ -73,7 +83,7 @@ public class HomeViewFragment extends Fragment
   private void setupRecyclerView() {
     recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     species = new ArrayList<>();
-    adapter = new HomeAdapter(getActivity(), species);
+    adapter = new HomeAdapter(getActivity(), species, this);
     recyclerView.setAdapter(adapter);
     contentView.setOnRefreshListener(this);
   }
@@ -105,6 +115,13 @@ public class HomeViewFragment extends Fragment
   }
 
   @Override public void onRefresh() {
+    contentView.setRefreshing(true);
+    this.species.clear();
+    presenter.getListSpecies();
+    contentView.setRefreshing(false);
+  }
 
+  @Override public void onItemClick(Species species) {
+    Toast.makeText(getActivity(), species.name, Toast.LENGTH_SHORT).show();
   }
 }
